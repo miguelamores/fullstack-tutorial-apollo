@@ -2,7 +2,7 @@ const { gql } = require('apollo-server');
 
 const typeDefs = gql`
   type Query {
-    launches: [Launch]!
+    launches( pageSize: Int, after: String): LaunchConnection!
     launch(id: ID!): Launch
     # Queries for the current user
     me: User
@@ -31,6 +31,12 @@ const typeDefs = gql`
   type Mission {
     name: String
     missionPatch(size: PatchSize): String
+  }
+
+  type LaunchConnection {
+    cursor: String!
+    hasMore: Boolean!
+    launches: [Launch]!
   }
 
   enum PatchSize {
