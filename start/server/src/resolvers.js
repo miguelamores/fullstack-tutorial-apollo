@@ -55,7 +55,7 @@ module.exports = {
       if (user) return Buffer.from(email).toString('base64')
     },
     bookTrips: async (_, { launchIds }, { dataSources }) => {
-      const results = await dataSources.userAPI.bookTrips({ launchIds })
+      const results = await dataSources.userApi.bookTrips({ launchIds })
       const launches = await dataSources.launchApi.getLaunchesByIds({ launchIds })
 
       return {
@@ -69,7 +69,7 @@ module.exports = {
       }
     },
     cancelTrip: async (_, { launchId }, { dataSources }) => {
-      const result = dataSources.userAPI.cancelTrip({ launchId })
+      const result = dataSources.userApi.cancelTrip({ launchId })
 
       if (!result) {
         return {
