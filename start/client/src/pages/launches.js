@@ -4,19 +4,6 @@ import gql from 'graphql-tag'
 
 import { LaunchTile, Header, Button, Loading } from '../components'
 
-const GET_LAUNCHES = gql`
-  query launchList($after: String) {
-    launches(after: $after) {
-      cursor
-      hasMore
-      launches {
-        ...LaunchTile
-      }
-    }
-  }
-  ${LAUNCH_TILE_DATA}
-`
-
 export const LAUNCH_TILE_DATA = gql`
   fragment LaunchTile on Launch {
     id
@@ -30,6 +17,19 @@ export const LAUNCH_TILE_DATA = gql`
       missionPatch
     }
   }
+`
+
+const GET_LAUNCHES = gql`
+  query launchList($after: String) {
+    launches(after: $after) {
+      cursor
+      hasMore
+      launches {
+        ...LaunchTile
+      }
+    }
+  }
+  ${LAUNCH_TILE_DATA}
 `
 
 const Launches = () => {

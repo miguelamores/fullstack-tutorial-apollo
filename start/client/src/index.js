@@ -1,3 +1,5 @@
+import React from 'react'
+import ReactDOM from 'react-dom'
 import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { HttpLink } from 'apollo-link-http'
@@ -6,6 +8,7 @@ import gql from 'graphql-tag'
 import { Query, ApolloProvider } from 'react-apollo'
 import Pages from './pages'
 import Login from './pages/login'
+import injectStyles from './styles'
 
 const cache = new InMemoryCache()
 const link = new HttpLink({
